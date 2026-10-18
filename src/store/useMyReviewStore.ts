@@ -47,6 +47,6 @@ export const useMyReviewStore = create<MyReviewState>()(
           return { reviews: rest }
         }),
     }),
-    { name: 'my-review-storage' }, // เปลี่ยน key ไม่ให้ชนกับของเดิม
+    { name: 'my-review-storage' }, 
   ),
 )

@@ -20,7 +20,6 @@ export const router = createBrowserRouter([
       { path: "watchlist", element: <WatchlistPage /> },
       { path: "my-ratings", element: <MyRatingsPage /> },
       { path: "about", element: <AboutPage /> },
-      { path: 'my-ratings', element: <MyRatingsPage /> },
       { path: 'my-ratings/:id', element: <MyReviewDetailPage /> },
     ],
   },

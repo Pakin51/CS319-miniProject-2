@@ -27,7 +27,7 @@ function ReviewEditor({ id }: { id: string }) {
       <div className="py-16 text-center space-y-3">
         <p className="text-base-content/70">ไม่พบหนังเรื่องนี้</p>
         <Link to="/my-ratings" className="btn btn-sm btn-secondary">
-          กลับไปหน้า My review
+          Back to My review
         </Link>
       </div>
     )
@@ -59,16 +59,19 @@ function ReviewEditor({ id }: { id: string }) {
   }
 
   const handleDelete = () => {
-    if (!window.confirm('ต้องการลบรีวิวนี้ใช่หรือไม่?')) return
+    if (!window.confirm('Delete this review?')) return
     deleteReview(id)
     navigate('/my-ratings')
   }
 
   return (
     <div className="space-y-4">
-      <Link to="/my-ratings" className="btn btn-ghost btn-sm text-base-content/70 -ml-2">
-        ← กลับ
-      </Link>
+      <Link to="/" aria-label="Back to My Reviews" className="btn btn-ghost btn-sm btn-circle -ml-2">
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
+       viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+  </svg>
+</Link>
 
       <article className="rounded-2xl bg-base-200 p-4 sm:p-6">
         {/* Header */}
@@ -81,7 +84,7 @@ function ReviewEditor({ id }: { id: string }) {
               className="flex items-center gap-2 text-sm font-bold text-neutral hover:opacity-70 transition-opacity"
               onClick={() => setWatched(movie, !watched)}
               aria-pressed={watched}
-              title="สลับสถานะดูแล้ว / ยังไม่ได้ดู"
+              title="Switch watched status"
             >
               {watched ? 'Watched' : 'Unwatched'}
               <EyeIcon watched={watched} className="w-6 h-6" />
@@ -94,8 +97,8 @@ function ReviewEditor({ id }: { id: string }) {
               }`}
               onClick={() => toggleWatchlist(movie)}
               aria-pressed={inWatchlist}
-              title={inWatchlist ? 'อยู่ใน Watch list (กดเพื่อเอาออก)' : 'เพิ่มลงใน Watch list'}
-              aria-label={inWatchlist ? 'เอาออกจาก Watch list' : 'เพิ่มลงใน Watch list'}
+              title={inWatchlist ? 'In Watch list (click to remove)' : 'Add to Watch list'}
+              aria-label={inWatchlist ? 'Remove from Watch list' : 'Add to Watch list'}
             >
               <BookmarkCheckIcon className="w-6 h-8" checkColor="#fff" />
             </button>
@@ -107,7 +110,7 @@ function ReviewEditor({ id }: { id: string }) {
           <div className="flex flex-col items-center md:items-start gap-3">
             <img
                 src={movie.Poster}
-                alt={`โปสเตอร์ ${movie.Title}`}
+                alt={`Poster of ${movie.Title}`}
                 className="review-poster shadow-md"
                 />
             <p className="font-bold text-neutral">
@@ -135,12 +138,12 @@ function ReviewEditor({ id }: { id: string }) {
                 placeholder="Write your review here..."
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                aria-label="รีวิวของคุณ"
+                aria-label="Your review"
               />
             ) : (
               <div className="w-full min-h-64 md:min-h-80 flex-1 rounded-lg bg-base-100 p-4 text-sm sm:text-base leading-relaxed whitespace-pre-line break-words text-base-content">
                 {review?.text || (
-                  <span className="text-base-content/50">(ไม่ได้เขียนข้อความรีวิว)</span>
+                  <span className="text-base-content/50">(No review text written)</span>
                 )}
               </div>
             )}
@@ -163,7 +166,7 @@ function ReviewEditor({ id }: { id: string }) {
                   className="btn btn-accent"
                   onClick={handleSave}
                   disabled={rating <= 0}
-                  title={rating <= 0 ? 'กรุณาให้คะแนนก่อนบันทึก' : undefined}
+                  title={rating <= 0 ? 'Please rate the movie before saving' : undefined}
                 >
                   Save my review
                 </button>

@@ -4,7 +4,6 @@ import WatchlistCard from '../components/WatchlistCard'
 import { useWatchlistStore } from '../store/useWatchlistStore'
 
 export default function WatchlistPage() {
-  // เลือก object ตรง ๆ แล้วค่อยแปลงนอก selector กัน re-render วนไม่จบ
   const watchlist = useWatchlistStore((s) => s.watchlist)
   const items = useMemo(
     () => Object.values(watchlist).sort((a, b) => b.addedAt - a.addedAt),
@@ -19,9 +18,9 @@ export default function WatchlistPage() {
       </div>
       {items.length === 0 ? (
         <div className="py-16 text-center space-y-3">
-          <p className="text-base-content/70">ยังไม่มีหนังใน Watch list</p>
+          <p className="text-base-content/70">No movies in Watch list</p>
           <Link to="/" className="btn btn-sm btn-secondary">
-            ไปเลือกหนัง
+            Go add movies
           </Link>
         </div>
       ) : (

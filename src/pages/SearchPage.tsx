@@ -35,7 +35,7 @@ export default function SearchPage() {
     return (
       <div className="flex flex-col items-center justify-center py-24 gap-4 text-base-content/50">
         <span className="text-6xl">🔍</span>
-        <p className="text-lg font-medium">พิมพ์ชื่อหนังที่ต้องการค้นหา</p>
+        <p className="text-lg font-medium">Type a movie title to search</p>
       </div>
     )
   }
@@ -45,22 +45,22 @@ export default function SearchPage() {
       {/* Header */}
       <div className="flex flex-col gap-0.5">
         <h1 className="text-xl font-bold text-base-content">
-          ผลการค้นหา
+          Search Results
         </h1>
         {data && (
           <p className="text-sm text-base-content/60">
-            "{query}" — พบ {Number(data.totalResults).toLocaleString()} รายการ
+            "{query}" — Found {Number(data.totalResults).toLocaleString()} items
           </p>
         )}
         {!data && !isLoading && !isError && (
-          <p className="text-sm text-base-content/60">กำลังค้นหา "{query}"…</p>
+          <p className="text-sm text-base-content/60">Searching for "{query}"…</p>
         )}
       </div>
 
       {/* Error state */}
       {isError && (
         <ErrorState
-          message={error.message || 'ค้นหาไม่สำเร็จ กรุณาลองใหม่'}
+          message={error.message || 'Search failed. Please try again.'}
           onRetry={() => void refetch()}
           isRetrying={isFetching}
         />
@@ -78,8 +78,8 @@ export default function SearchPage() {
       {/* No results */}
       {!isLoading && !isError && data?.Search.length === 0 && (
         <div className="flex flex-col items-center justify-center py-24 gap-3 text-base-content/50">
-          <span className="text-5xl"></span>
-          <p className="text-base font-medium">ไม่พบหนังที่ค้นหา</p>
+          <span className="text-5xl">🎬</span>
+          <p className="text-base font-medium">Movie not found</p>
         </div>
       )}
 
@@ -91,11 +91,11 @@ export default function SearchPage() {
             disabled={page <= 1}
             onClick={() => goToPage(page - 1)}
           >
-            ← ก่อนหน้า
+            Previous
           </button>
 
           <span className="text-sm text-base-content/70 px-2">
-            หน้า {page} / {totalPages}
+            Page {page} / {totalPages}
           </span>
 
           <button
@@ -103,7 +103,7 @@ export default function SearchPage() {
             disabled={page >= totalPages}
             onClick={() => goToPage(page + 1)}
           >
-            ถัดไป →
+            Next
           </button>
         </div>
       )}

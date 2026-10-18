@@ -78,14 +78,14 @@ function MovieDetailContent({ movie }: MovieDetailContentProps) {
       <div className="flex justify-center">
         <img
           src={poster}
-          alt={`โปสเตอร์ ${movie.Title}`}
+          alt={`Poster of ${movie.Title}`}
           className="w-48 sm:w-60 md:w-72 rounded-lg shadow-lg object-cover"
         />
       </div>
 
       {/* Actions: watchlist */}
       <section
-        aria-label="รายการโปรด"
+        aria-label="Favorite"
         className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8"
       >
         <button
@@ -101,7 +101,7 @@ function MovieDetailContent({ movie }: MovieDetailContentProps) {
           }
           aria-pressed={inWatchlist}
         >
-          {inWatchlist ? "✓ อยู่ใน Watch list แล้ว" : "+ เพิ่มลงใน Watch list"}
+          {inWatchlist ? "Already in Watchlist!" : "Add to Watchlist"}
         </button>
       </section>
 
@@ -109,8 +109,8 @@ function MovieDetailContent({ movie }: MovieDetailContentProps) {
 
       {/* Plot */}
       {plot && (
-        <section aria-label="เรื่องย่อ" className="space-y-2">
-          <h2 className="text-lg font-bold text-base-content">เรื่องย่อ</h2>
+        <section aria-label="Plot" className="space-y-2">
+          <h2 className="text-lg font-bold text-base-content">Plot</h2>
           <p className="text-sm sm:text-base leading-relaxed text-base-content/90 whitespace-pre-line">
             {plot}
           </p>
@@ -119,9 +119,9 @@ function MovieDetailContent({ movie }: MovieDetailContentProps) {
 
       {/* Ratings from sources */}
       {movie.Ratings.length > 0 && (
-        <section aria-label="คะแนนจากเว็บไซต์ต่าง ๆ" className="mt-6">
+        <section aria-label="Ratings from sources" className="mt-6">
           <h2 className="text-lg font-bold text-base-content mb-3">
-            คะแนนรีวิว
+            Ratings from sources
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {movie.Ratings.map((r) => (
@@ -138,15 +138,15 @@ function MovieDetailContent({ movie }: MovieDetailContentProps) {
       )}
 
       {/* Details */}
-      <section aria-label="ข้อมูลเพิ่มเติม" className="mt-6">
-        <h2 className="text-lg font-bold text-base-content mb-1">รายละเอียด</h2>
+      <section aria-label="Additional Details" className="mt-6">
+        <h2 className="text-lg font-bold text-base-content mb-1">Additional Details</h2>
         <dl className="divide-y divide-base-300">
-          <InfoRow label="ผู้กำกับ" value={valueOrNull(movie.Director)} />
-          <InfoRow label="บทภาพยนตร์" value={valueOrNull(movie.Writer)} />
-          <InfoRow label="นักแสดง" value={valueOrNull(movie.Actors)} />
-          <InfoRow label="ภาษา" value={valueOrNull(movie.Language)} />
-          <InfoRow label="ประเทศ" value={valueOrNull(movie.Country)} />
-          <InfoRow label="รางวัล" value={valueOrNull(movie.Awards)} />
+          <InfoRow label="Director" value={valueOrNull(movie.Director)} />
+          <InfoRow label="Writer" value={valueOrNull(movie.Writer)} />
+          <InfoRow label="Cast" value={valueOrNull(movie.Actors)} />
+          <InfoRow label="Language" value={valueOrNull(movie.Language)} />
+          <InfoRow label="Country" value={valueOrNull(movie.Country)} />
+          <InfoRow label="Awards" value={valueOrNull(movie.Awards)} />
           <InfoRow
             label="IMDb"
             value={
@@ -167,15 +167,18 @@ export default function MovieDetailPage() {
 
   return (
     <div className="space-y-4">
-      <Link to="/" className="btn btn-ghost btn-sm text-base-content/70 -ml-2">
-        ← กลับหน้าหลัก
-      </Link>
+      <Link to="/" aria-label="Back to Home" className="btn btn-ghost btn-sm btn-circle -ml-2">
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
+       viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+  </svg>
+</Link>
 
       {isLoading && <MovieDetailSkeleton />}
 
       {isError && (
         <ErrorState
-          message={error.message || "เกิดข้อผิดพลาดในการเชื่อมต่อ"}
+          message={error.message || "Please check your connection and try again."}
           onRetry={() => void refetch()}
           isRetrying={isFetching}
         />
