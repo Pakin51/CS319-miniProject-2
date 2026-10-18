@@ -8,7 +8,7 @@ export default function Navbar() {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
 
-  // Sync input when URL ?q changes (e.g. navigating back)
+ 
   useEffect(() => {
     setQuery(searchParams.get("q") ?? "");
   }, [searchParams]);
@@ -91,7 +91,6 @@ export default function Navbar() {
           <UserIcon className="h-5 w-5 opacity-80" />
         </button>
 
-        {/* 3-dot menu — mock only */}
         <button
           id="navbar-more"
           className="w-8 h-8 rounded-full flex items-center justify-center

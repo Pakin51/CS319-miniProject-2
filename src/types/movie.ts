@@ -7,24 +7,24 @@ export interface OmdbMovieDetail {
   Rated: string
   Released: string
   Runtime: string
-  Genre: string           // comma-separated: "Drama, Horror, Thriller"
+  Genre: string           
   Director: string
   Writer: string
-  Actors: string          // comma-separated
+  Actors: string          
   Plot: string
   Language: string
   Country: string
   Awards: string
-  Poster: string          // URL
+  Poster: string          
   Ratings: OmdbRating[]
   Metascore: string
-  imdbRating: string      // "8.1" (string, not number)
-  imdbVotes: string       // "1,217,171"
-  imdbID: string          // "tt1520211"
-  Type: string            // "movie" | "series" | "episode"
+  imdbRating: string      
+  imdbVotes: string       
+  imdbID: string          
+  Type: string            
   totalSeasons?: string
-  Response: string        // "True" | "False"
-  Error?: string          // present when Response = "False"
+  Response: string        
+  Error?: string          
 }
 
 export interface OmdbRating {

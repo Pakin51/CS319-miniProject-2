@@ -1,7 +1,7 @@
-/* ===== หน้ารายการ My Review ===== */
+
 .myreview-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); /* ปรับขนาดการ์ดตรงนี้ */
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); 
   gap: 1.5rem;
   list-style: none;
   padding: 0;
@@ -11,7 +11,6 @@
   width: 100%;
 }
 
-/* ===== หน้าเขียน/ดูรีวิว ===== */
 .review-layout {
   display: grid;
   grid-template-columns: 1fr;
@@ -20,7 +19,7 @@
 
 @media (min-width: 768px) {
   .review-layout {
-    grid-template-columns: 20rem 1fr; /* ขนาดคอลัมน์โปสเตอร์ (เดิม 14rem) */
+    grid-template-columns: 20rem 1fr; 
   }
 }
 
@@ -32,9 +31,9 @@
   border-radius: 0.125rem;
 }
 
-/* คอลัมน์ขวา (หัวข้อ+ดาว, กล่องข้อความ, ปุ่ม) จำกัดความกว้างให้แคบลง */
+
 .review-main {
   width: 100%;
-  max-width: 100%; /* ปรับความกว้างกล่องรีวิวตรงนี้ */
+  max-width: 100%; 
   min-width: 0;
 }

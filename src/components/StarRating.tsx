@@ -25,13 +25,13 @@ export default function StarRating({ value, onChange, size = 'w-8 h-8' }: StarRa
                   type="button"
                   className="absolute left-0 top-0 h-full w-1/2"
                   onClick={() => onChange(i - 0.5)}
-                  aria-label={`${i - 0.5} ดาว`}
+                  aria-label={`${i - 0.5} Stars`}
                 />
                 <button
                   type="button"
                   className="absolute right-0 top-0 h-full w-1/2"
                   onClick={() => onChange(i)}
-                  aria-label={`${i} ดาว`}
+                  aria-label={`${i} Stars`}
                 />
               </>
             )}
