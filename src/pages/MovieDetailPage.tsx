@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 import { useMovie } from "../hooks/useMovie";
 import { useWatchlistStore } from "../store/useWatchlistStore";
@@ -140,7 +140,9 @@ function MovieDetailContent({ movie }: MovieDetailContentProps) {
 
       {/* Details */}
       <section aria-label="Additional Details" className="mt-6">
-        <h2 className="text-lg font-bold text-base-content mb-1">Additional Details</h2>
+        <h2 className="text-lg font-bold text-base-content mb-1">
+          Additional Details
+        </h2>
         <dl className="divide-y divide-base-300">
           <InfoRow label="Director" value={valueOrNull(movie.Director)} />
           <InfoRow label="Writer" value={valueOrNull(movie.Writer)} />
@@ -168,7 +170,6 @@ export default function MovieDetailPage() {
   const { data, isLoading, isError, error, refetch, isFetching } = useMovie(id);
 
   function handleBack() {
-
     if (window.history.state && window.history.state.idx > 0) {
       navigate(-1);
     } else {
@@ -176,7 +177,7 @@ export default function MovieDetailPage() {
     }
   }
 
- return (
+  return (
     <div className="space-y-4">
       <button
         type="button"
@@ -184,9 +185,19 @@ export default function MovieDetailPage() {
         aria-label="Back"
         className="btn btn-ghost btn-sm btn-circle -ml-2"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-             viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
         </svg>
       </button>
 
@@ -194,7 +205,9 @@ export default function MovieDetailPage() {
 
       {isError && (
         <ErrorState
-          message={error.message || "Please check your connection and try again."}
+          message={
+            error.message || "Please check your connection and try again."
+          }
           onRetry={() => void refetch()}
           isRetrying={isFetching}
         />
