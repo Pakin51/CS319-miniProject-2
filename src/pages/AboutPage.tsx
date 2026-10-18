@@ -96,6 +96,14 @@ export default function AboutPage() {
           <h1 className="text-4xl sm:text-5xl font-extrabold text-neutral/80">
             About us
           </h1>
+          <a
+            href="https://www.omdbapi.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block mt-4 text-sm font-medium underline"
+          >
+            https://www.omdbapi.com/
+          </a>
         </header>
 
         <hr className="border-neutral/70 mb-8" />
