@@ -70,26 +70,32 @@ function MemberCard({ member }: { member: Member }) {
 export default function AboutPage() {
   return (
     <div className="space-y-4">
-      <Link to="/" aria-label="Back to Home" className="btn btn-ghost btn-sm btn-circle -ml-2">
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-       viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-  </svg>
-</Link>
+      <Link
+        to="/"
+        aria-label="Back to Home"
+        className="btn btn-ghost btn-sm btn-circle -ml-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+      </Link>
 
       <div className="max-w-5xl mx-auto">
         <header className="text-center mt-4 mb-6">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-neutral/80">
-            OMDb api
+            About us
           </h1>
-          <a
-            href="https://www.omdbapi.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block mt-4 text-sm font-medium underline"
-          >
-            https://www.omdbapi.com/
-          </a>
         </header>
 
         <hr className="border-neutral/70 mb-8" />
