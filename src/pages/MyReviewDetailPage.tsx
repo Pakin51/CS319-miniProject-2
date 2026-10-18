@@ -4,7 +4,6 @@ import { BookmarkCheckIcon, EyeIcon } from '../components/icons'
 import StarRating from '../components/StarRating'
 import { useMyReviewStore } from '../store/useMyReviewStore'
 import { useWatchlistStore, type WatchlistMovie } from '../store/useWatchlistStore'
-import './style.css'
 
 function ReviewEditor({ id }: { id: string }) {
   const navigate = useNavigate()
@@ -25,7 +24,7 @@ function ReviewEditor({ id }: { id: string }) {
   if (!source) {
     return (
       <div className="py-16 text-center space-y-3">
-        <p className="text-base-content/70">ไม่พบหนังเรื่องนี้</p>
+        <p className="text-base-content/70">Movie not found</p>
         <Link to="/my-ratings" className="btn btn-sm btn-secondary">
           Back to My review
         </Link>
@@ -66,7 +65,7 @@ function ReviewEditor({ id }: { id: string }) {
 
   return (
     <div className="space-y-4">
-      <Link to="/" aria-label="Back to My Reviews" className="btn btn-ghost btn-sm btn-circle -ml-2">
+      <Link to="/my-ratings" aria-label="Back to My Reviews" className="btn btn-ghost btn-sm btn-circle -ml-2">
   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
        viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -105,21 +104,21 @@ function ReviewEditor({ id }: { id: string }) {
           </div>
         </header>
 
-        <div className="mt-4 review-layout">
+        <div className="mt-4 flex flex-col sm:flex-row sm:items-stretch gap-6">
           {/* Poster + title */}
-          <div className="flex flex-col items-center md:items-start gap-3">
+          <div className="flex flex-col items-center sm:items-start gap-3 shrink-0 sm:w-48 md:w-60 lg:w-72">
             <img
-                src={movie.Poster}
-                alt={`Poster of ${movie.Title}`}
-                className="review-poster shadow-md"
-                />
-            <p className="font-bold text-neutral">
+              src={movie.Poster}
+              alt={`Poster of ${movie.Title}`}
+              className="w-48 sm:w-full rounded-sm shadow-md object-cover aspect-[2/3]"
+            />
+            <p className="font-bold text-neutral ">
               {movie.Title} {movie.Year}
             </p>
           </div>
 
           {/* Review area */}
-          <div className="review-main flex flex-col gap-4">
+          <div className="flex flex-col gap-4 flex-1 min-w-0 w-full">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-sm font-bold text-neutral">
                 {editing ? 'Write your review' : 'Your review'}
@@ -187,6 +186,5 @@ function ReviewEditor({ id }: { id: string }) {
 
 export default function MyReviewDetailPage() {
   const { id = '' } = useParams<{ id: string }>()
-  // key ทำให้ state ของฟอร์มรีเซ็ตเมื่อเปลี่ยนเรื่อง
   return <ReviewEditor key={id} id={id} />
 }
