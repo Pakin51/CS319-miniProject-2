@@ -62,7 +62,7 @@ export default function MyReviewPage() {
                 <Link to={reviewPath} className="block">
                   <img
                     src={movie.Poster}
-                    alt={`โปสเตอร์ ${movie.Title}`}
+                    alt={`Poster of ${movie.Title}`}
                     className="w-full aspect-[2/3] object-cover rounded-sm"
                     loading="lazy"
                   />
@@ -80,8 +80,8 @@ export default function MyReviewPage() {
                   <Link
                     to={reviewPath}
                     className="text-accent-content hover:opacity-70 transition-opacity"
-                    title={reviewed ? 'ดูรีวิวของฉัน' : 'เขียนรีวิว'}
-                    aria-label={reviewed ? `ดูรีวิว ${movie.Title}` : `เขียนรีวิว ${movie.Title}`}
+                    title={reviewed ? 'View my review' : 'Write a review'}
+                    aria-label={reviewed ? `View review for ${movie.Title}` : `Write review for ${movie.Title}`}
                   >
                     <ReviewIcon filled={reviewed} />
                   </Link>
@@ -103,8 +103,8 @@ export default function MyReviewPage() {
                       )
                     }
                     aria-pressed={watched}
-                    title={watched ? 'ดูแล้ว (กดเพื่อยกเลิก)' : 'ยังไม่ได้ดู (กดเพื่อทำเครื่องหมายว่าดูแล้ว)'}
-                    aria-label={watched ? 'ยกเลิกสถานะดูแล้ว' : 'ทำเครื่องหมายว่าดูแล้ว'}
+                    title={watched ? 'Already watched (click to remove)' : 'Not watched yet (click to mark as watched)'}
+                    aria-label={watched ? 'Remove from watched list' : 'Add to watched list'}
                   >
                     <EyeIcon watched={watched} />
                   </button>

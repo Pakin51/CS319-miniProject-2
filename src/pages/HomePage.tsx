@@ -16,7 +16,7 @@ export default function HomePage() {
     <div className="space-y-4">
       {/* Movie grid — 5 columns matching design */}
       <h1 className="text-xl font-bold text-base-content">
-        รายการแนะนำ
+        Recommanded Movies
       </h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
         {isLoading
@@ -27,7 +27,7 @@ export default function HomePage() {
       {/* Error fallback */}
       {hasError && (
         <ErrorState
-          message="บางรายการโหลดไม่สำเร็จ"
+          message="Some movies failed to load. Please check your connection and try again."
           isRetrying={movieQueries.some((q) => q.isFetching)}
           onRetry={() =>
             movieQueries.forEach((q) => {

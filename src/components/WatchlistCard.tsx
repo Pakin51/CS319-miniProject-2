@@ -35,7 +35,7 @@ export default function WatchlistCard({ item }: { item: WatchlistItem }) {
       <Link to={`/movie/${item.imdbID}`} className="block">
         <img
           src={item.Poster}
-          alt={`โปสเตอร์ ${item.Title}`}
+          alt={`Poster of ${item.Title}`}
           className="w-full aspect-[2/3] object-cover rounded-sm"
           loading="lazy"
         />
@@ -50,8 +50,8 @@ export default function WatchlistCard({ item }: { item: WatchlistItem }) {
           type="button"
           className="text-accent-content hover:opacity-70 transition-opacity"
           onClick={() => removeFromWatchlist(item.imdbID)}
-          title="บันทึกไว้ใน Watch list (กดเพื่อเอาออก)"
-          aria-label={`เอา ${item.Title} ออกจาก Watch list`}
+          title="Added to Watch list (click to remove)"
+          aria-label={`Remove ${item.Title} from Watch list`}
         >
           <BookmarkCheckIcon />
         </button>
@@ -63,8 +63,8 @@ export default function WatchlistCard({ item }: { item: WatchlistItem }) {
           }`}
           onClick={() => toggleWatched(item.imdbID)}
           aria-pressed={item.watched}
-          title={item.watched ? 'ดูแล้ว (กดเพื่อยกเลิก)' : 'ยังไม่ได้ดู (กดเพื่อทำเครื่องหมายว่าดูแล้ว)'}
-          aria-label={item.watched ? 'ยกเลิกสถานะดูแล้ว' : 'ทำเครื่องหมายว่าดูแล้ว'}
+          title={item.watched ? 'Watched (click to unmark)' : 'Not watched (click to mark as watched)'}
+          aria-label={item.watched ? 'Unmark as watched' : 'Mark as watched'}
         >
           <EyeIcon watched={item.watched} />
         </button>

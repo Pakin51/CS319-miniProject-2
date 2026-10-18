@@ -4,7 +4,7 @@ export default function MovieDetailSkeleton() {
     <div
       className="max-w-3xl mx-auto animate-pulse space-y-6"
       aria-busy="true"
-      aria-label="กำลังโหลดรายละเอียดหนัง"
+      aria-label="Loading movie details"
     >
       <div className="flex flex-col items-center gap-2">
         <div className="h-8 w-3/4 rounded bg-base-300" />
