@@ -1,4 +1,3 @@
-import './style.css'
 
 import { useMemo } from 'react'
 import { Link } from 'react-router'
